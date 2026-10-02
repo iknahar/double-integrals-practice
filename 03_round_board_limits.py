@@ -1,7 +1,7 @@
-"""Limits that bend with a round board, and the lazy square mistake."""
+"""Limits that bend with a round region, and the lazy square mistake."""
 import sympy as sp
 x, y = sp.symbols("x y", real=True)
-top = sp.sqrt(1 - x**2)        # where the circle's edge is, at this x
+top = sp.sqrt(1 - x**2)          # the circle's edge at this x
 disk = sp.integrate(1 / sp.pi, (y, -top, top), (x, -1, 1))
 print("round limits:", sp.simplify(disk))     # 1
 lazy = sp.integrate(1 / sp.pi, (y, -1, 1), (x, -1, 1))

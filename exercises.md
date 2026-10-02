@@ -2,7 +2,27 @@
 
 Draw the region before you write any limits. Check every answer in SymPy.
 
-### 1. The practice board again
+### 0. The station, with different waits
+
+You wait 10 minutes and your friend waits 20 (whoever arrives first waits their own time).
+Both arrive at random between 5:00 and 6:00. What is the chance you meet?
+
+<details><summary>Answer</summary>
+
+You meet if your friend arrives no more than 10 minutes after you, or you arrive no more than
+20 minutes after your friend. The two missed corners are triangles with legs 50 and 40
+minutes: (50² + 40²) / 2 / 60² = 4100 / 7200. So you meet with chance 1 − 0.569 = 0.431.
+
+```python
+import numpy as np
+rng = np.random.default_rng(0)
+you, friend = rng.uniform(0, 60, size=(2, 1_000_000))
+gap = friend - you
+print(np.mean((gap <= 10) & (gap >= -20)))   # about 0.43
+```
+</details>
+
+### 1. The running-late hill again
 
 For f(x, y) = x + y on the unit square, find P(X < Y).
 

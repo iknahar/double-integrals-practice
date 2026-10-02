@@ -1,4 +1,4 @@
-"""Polar coordinates, the Jacobian r, and the outer-half surprise."""
+"""Polar coordinates, the Jacobian r, and why random darts favour the outer half."""
 import sympy as sp
 r, t = sp.symbols("r theta", positive=True)
 J = sp.Matrix([r * sp.cos(t), r * sp.sin(t)]).jacobian([r, t])
